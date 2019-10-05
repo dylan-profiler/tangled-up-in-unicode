@@ -8,10 +8,10 @@ extras_requires = {
 }
 
 tests_require = ["pytest"]
-
+#
 setup(
     name="tangled_up_in_unicode",
-    version="0.0.1",
+    version="0.0.3",
     description="Access to the Unicode Character Database (UCD)",
     packages=find_packages("src"),
     package_dir={"": "src"},
