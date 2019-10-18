@@ -8,11 +8,12 @@ extras_requires = {
 }
 
 tests_require = ["pytest"]
-#
+
 setup(
     name="tangled_up_in_unicode",
     version="0.0.3",
     description="Access to the Unicode Character Database (UCD)",
+    url="https://github.com/dylan-profiler/tangled-up-in-unicode",
     packages=find_packages("src"),
     package_dir={"": "src"},
     install_requires=[],
