@@ -7,8 +7,10 @@ This module provides an alternative to Python's standard library [`unicodedata`]
 - Adds human-readable class names (Property value aliases).
 - Extends the properties to use more potential of the database.
 
-Please read the [docs](#) for details.
+Note that Python 3 added unicode support, but that this is different from the UCD.
+Unicode support handles storing and manipulating unicode characters, while this package aims to provide properties of specific characters.
 
+<!-- Please read the [docs](#) for details.-->
 
 ## Example
 
