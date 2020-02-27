@@ -11,9 +11,10 @@ tests_require = ["pytest"]
 
 setup(
     name="tangled_up_in_unicode",
-    version="0.0.3",
+    version="0.0.4",
     description="Access to the Unicode Character Database (UCD)",
     url="https://github.com/dylan-profiler/tangled-up-in-unicode",
+    license="BSD 4-Clause",
     packages=find_packages("src"),
     package_dir={"": "src"},
     install_requires=[],
@@ -21,8 +22,10 @@ setup(
     python_requires=">=3.5",
     classifiers=[
         "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.5",
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
         "Operating System :: OS Independent",
         "Topic :: Database",
         "Topic :: Scientific/Engineering :: Information Analysis",

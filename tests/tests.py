@@ -1,6 +1,6 @@
 import pytest
 
-from tangled_up_in_unicode import  *
+from tangled_up_in_unicode import *
 
 
 @pytest.mark.parametrize(
@@ -234,7 +234,7 @@ def test_values(char, expected_value):
                 "Bidirectional_Long": "Left_To_Right",
                 "Binary_Properties": set(),
                 "Uppercase": "",
-                "Lowercase": '0444',
+                "Lowercase": "0444",
                 "Titlecase": "",
                 "Age_Short": "1.1",
                 "Age_Long": "V1_1",
@@ -252,7 +252,7 @@ def test_values(char, expected_value):
                 "Bidirectional_Long": "Left_To_Right",
                 "Binary_Properties": {"Hex_Digit", "ASCII_Hex_Digit"},
                 "Uppercase": "",
-                "Lowercase": '0061',
+                "Lowercase": "0061",
                 "Titlecase": "",
                 "Age_Short": "1.1",
                 "Age_Long": "V1_1",
@@ -359,9 +359,9 @@ def test_values(char, expected_value):
                 "East_Asian_Width_Long": "Narrow",
                 "Bidirectional_Long": "Left_To_Right",
                 "Binary_Properties": {"Hex_Digit", "ASCII_Hex_Digit"},
-                "Uppercase": '0041',
+                "Uppercase": "0041",
                 "Lowercase": "",
-                "Titlecase": '0041',
+                "Titlecase": "0041",
                 "Age_Short": "1.1",
                 "Age_Long": "V1_1",
             },
@@ -432,7 +432,7 @@ def test_values(char, expected_value):
                 "Bidirectional_Long": "Left_To_Right",
                 "Binary_Properties": set(),
                 "Uppercase": "",
-                "Lowercase": '0133',
+                "Lowercase": "0133",
                 "Titlecase": "",
                 "Age_Short": "1.1",
                 "Age_Long": "V1_1",
@@ -542,38 +542,42 @@ def test_version():
     assert unidata_version == "12.0.1"
 
 
-@pytest.mark.parametrize("idx,expected_value", [
-    (32, 'SPACE'),
-    (97293, 'TANGUT IDEOGRAPH-17C0D'),
-    (13312, 'CJK UNIFIED IDEOGRAPH-3400'),
-    (178208, 'CJK UNIFIED IDEOGRAPH-2B820'),
-    (178209, 'CJK UNIFIED IDEOGRAPH-2B821'),
-    (4360, 'HANGUL CHOSEONG SSANGPIEUP'),
-    (48764, 'HANGUL SYLLABLE BBAE'),
-    (65475, 'HALFWIDTH HANGUL LETTER AE')
-])
+@pytest.mark.parametrize(
+    "idx,expected_value",
+    [
+        (32, "SPACE"),
+        (97293, "TANGUT IDEOGRAPH-17C0D"),
+        (13312, "CJK UNIFIED IDEOGRAPH-3400"),
+        (178208, "CJK UNIFIED IDEOGRAPH-2B820"),
+        (178209, "CJK UNIFIED IDEOGRAPH-2B821"),
+        (4360, "HANGUL CHOSEONG SSANGPIEUP"),
+        (48764, "HANGUL SYLLABLE BBAE"),
+        (65475, "HALFWIDTH HANGUL LETTER AE"),
+    ],
+)
 def test_name(idx, expected_value):
     assert name(chr(idx)) == expected_value
 
 
-@pytest.mark.parametrize("idx,expected_value", [
-    (0, 'Cc'),
-    (13312, 'Lo'),
-    (19894, 'Zzzz')
-])
+@pytest.mark.parametrize(
+    "idx,expected_value", [(0, "Cc"), (13312, "Lo"), (19894, "Zzzz")]
+)
 def test_category(idx, expected_value):
     assert category(chr(idx)) == expected_value
 
 
-@pytest.mark.parametrize("idx,expected_value", [
-    (0, 'BN'),
-    (917994, 'NSM'),
-    (13312, 'L'),
-    (13313, 'L'),
-    (20000, 'L'),
-    (19893, 'L'),
-    (19894, ''),
-])
+@pytest.mark.parametrize(
+    "idx,expected_value",
+    [
+        (0, "BN"),
+        (917994, "NSM"),
+        (13312, "L"),
+        (13313, "L"),
+        (20000, "L"),
+        (19893, "L"),
+        (19894, ""),
+    ],
+)
 def test_bidirectional(idx, expected_value):
     assert bidirectional(chr(idx)) == expected_value
 
@@ -601,14 +605,14 @@ def test_digit():
 
 
 def test_numeric():
-    assert numeric(chr(0), -1.) == -1.
-    assert numeric(chr(53)) == 5.
-    assert numeric(chr(1637)) == 5.
-    assert numeric(chr(1989)) == 5.
-    assert numeric(chr(2411)) == 5.
-    assert numeric(chr(2539)) == 5.
+    assert numeric(chr(0), -1.0) == -1.0
+    assert numeric(chr(53)) == 5.0
+    assert numeric(chr(1637)) == 5.0
+    assert numeric(chr(1989)) == 5.0
+    assert numeric(chr(2411)) == 5.0
+    assert numeric(chr(2539)) == 5.0
     assert numeric(chr(13312), -1) == -1
-    assert numeric(chr(2), -1) == -1.
+    assert numeric(chr(2), -1) == -1.0
 
 
 def test_combining():
@@ -625,44 +629,47 @@ def test_mirrored():
     assert mirrored(chr(10630)) == 1
 
 
-@pytest.mark.parametrize("idx,expected_value", [
-    (5, ''),
-    (13312, ''),
-    (54491, '4369 4465 4534'),
-    (44032, '4352 4449'),
-    (8450, '<font> 0043'),
-    (13071, '<square> 30AC 30F3 30DE')
-])
+@pytest.mark.parametrize(
+    "idx,expected_value",
+    [
+        (5, ""),
+        (13312, ""),
+        (54491, "4369 4465 4534"),
+        (44032, "4352 4449"),
+        (8450, "<font> 0043"),
+        (13071, "<square> 30AC 30F3 30DE"),
+    ],
+)
 def test_decomposition(idx, expected_value):
     assert decomposition(chr(idx)) == expected_value
 
 
 def test_uppercase():
-    assert uppercase(chr(80)) == ''
-    assert uppercase(chr(112)) == '0050' # 80
+    assert uppercase(chr(80)) == ""
+    assert uppercase(chr(112)) == "0050"  # 80
 
 
 def test_lowercase():
-    assert lowercase(chr(80)) == '0070' # 112
-    assert lowercase(chr(112)) == ''
+    assert lowercase(chr(80)) == "0070"  # 112
+    assert lowercase(chr(112)) == ""
 
 
 def test_titlecase():
-    assert titlecase(chr(456)) == '01C8'
+    assert titlecase(chr(456)) == "01C8"
 
 
 def test_east_asian_width():
-    assert east_asian_width(chr(165)) == 'Na'
-    assert east_asian_width(chr(20000)) == 'W'
-    assert east_asian_width(chr(127386)) == 'W'
+    assert east_asian_width(chr(165)) == "Na"
+    assert east_asian_width(chr(20000)) == "W"
+    assert east_asian_width(chr(127386)) == "W"
 
 
 def test_block():
-    assert block(chr(0)) == 'Basic Latin'
-    assert block(chr(80)) == 'Basic Latin'
-    assert block(chr(20000)) == 'CJK Unified Ideographs'
-    assert block(chr(13312)) == 'CJK Unified Ideographs Extension A'
-    assert block(chr(54491)) == 'Hangul Syllables'
+    assert block(chr(0)) == "Basic Latin"
+    assert block(chr(80)) == "Basic Latin"
+    assert block(chr(20000)) == "CJK Unified Ideographs"
+    assert block(chr(13312)) == "CJK Unified Ideographs Extension A"
+    assert block(chr(54491)) == "Hangul Syllables"
 
 
 def test_age():
@@ -683,16 +690,17 @@ def test_script():
     assert script(chr(13055)) == "Common"
 
 
-@pytest.mark.parametrize("idx,expected_value",
-                         [
-                             (0, set()),
-                             (8, set()),
-                             (33, {'Pattern_Syntax', 'Terminal_Punctuation', 'Sentence_Terminal'}),
-                             (20000, {'Unified_Ideograph', 'Ideographic'}),
-                             (13312, {'Unified_Ideograph', 'Ideographic'}),
-                             (78610, set()),
-                             (13055, set()),
-                         ]
+@pytest.mark.parametrize(
+    "idx,expected_value",
+    [
+        (0, set()),
+        (8, set()),
+        (33, {"Pattern_Syntax", "Terminal_Punctuation", "Sentence_Terminal"}),
+        (20000, {"Unified_Ideograph", "Ideographic"}),
+        (13312, {"Unified_Ideograph", "Ideographic"}),
+        (78610, set()),
+        (13055, set()),
+    ],
 )
 def test_proplist(idx, expected_value):
     assert prop_list(chr(idx)) == expected_value
