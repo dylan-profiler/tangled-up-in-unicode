@@ -2,10 +2,11 @@
 
 This module provides access to character properties for all Unicode characters, from the Unicode Character Database (UCD) .
 This module provides an alternative to Python's standard library [`unicodedata`](https://docs.python.org/3/library/unicodedata.html).
-`Tangled up in Unicode` provides three main benefits compared to the standard library:
+`Tangled up in Unicode` provides four main benefits compared to the standard library:
 - The [latest version](http://www.unicode.org/versions/latest/) of the Unicode database is used.
 - Adds human-readable class names (Property value aliases).
 - Extends the properties to use more potential of the database.
+- UCD version independent of Python version (Python 3.6 has UCD 9.0, 3.7 has UCD 11.0.0, 3.8 has 12.0.1)
 
 Note that Python 3 added unicode support, but that this is different from the UCD.
 Unicode support handles storing and manipulating unicode characters, while this package aims to provide properties of specific characters.
@@ -61,7 +62,7 @@ Extra information provided by this package
 | Block						| &#9745; + alias				| -  					|
 | Age						| &#9745; + alias				| -  					|
 | Binary Property Values 	| &#9745;						| -  					|
-| Version					| 12.0.1 ([latest](http://www.unicode.org/versions/latest/))				| 11.0.0				|
+| Version					| 13.0.0 ([latest](http://www.unicode.org/versions/latest/))				| 12.0.1				|
 
 _Table 1: presence of properties is denoted by &#9745; (Unicode Character 'BALLOT BOX WITH CHECK' (U+2611))._		
 

@@ -11,7 +11,7 @@ tests_require = ["pytest"]
 
 setup(
     name="tangled_up_in_unicode",
-    version="0.0.4",
+    version="0.0.5",
     description="Access to the Unicode Character Database (UCD)",
     url="https://github.com/dylan-profiler/tangled-up-in-unicode",
     license="BSD 4-Clause",
