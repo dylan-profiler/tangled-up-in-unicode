@@ -1,6 +1,6 @@
-from setuptools import setup
-from setuptools import find_packages
+from pathlib import Path
 
+from setuptools import find_packages, setup
 
 extras_requires = {
     "dev_docs": ["recommonmark", "sphinx_rtd_theme", "sphinx-autodoc-typehints"],
@@ -9,9 +9,13 @@ extras_requires = {
 
 tests_require = ["pytest"]
 
+source_root = Path(".")
+with (source_root / "README.md").open(encoding="utf-8") as f:
+    long_description = f.read()
+
 setup(
     name="tangled_up_in_unicode",
-    version="0.0.5",
+    version="0.0.6",
     description="Access to the Unicode Character Database (UCD)",
     url="https://github.com/dylan-profiler/tangled-up-in-unicode",
     license="BSD 4-Clause",
@@ -20,6 +24,8 @@ setup(
     install_requires=[],
     include_package_data=True,
     python_requires=">=3.5",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
     classifiers=[
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.5",
