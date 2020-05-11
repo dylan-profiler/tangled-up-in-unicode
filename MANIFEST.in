@@ -1,2 +1,6 @@
 include LICENSE
-include README.md
+include *.md
+exclude *.bat
+exclude compare.py
+exclude tests
+recursive-exclude tests *
