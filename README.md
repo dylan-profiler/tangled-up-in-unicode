@@ -6,7 +6,7 @@ This module provides an alternative to Python's standard library [`unicodedata`]
 - The [latest version](http://www.unicode.org/versions/latest/) of the Unicode database is used.
 - Adds human-readable class names (Property value aliases).
 - Extends the properties to use more potential of the database.
-- UCD version independent of Python version (Python 3.6 has UCD 9.0, 3.7 has UCD 11.0.0, 3.8 has 12.0.1)
+- UCD version independent of Python version (Python 3.6 has UCD 9.0, 3.7 has UCD 11.0.0, 3.8 has 12.0.1, 3.9 has 13.0.0)
 
 Note that Python 3 added unicode support, but that this is different from the UCD.
 Unicode support handles storing and manipulating unicode characters, while this package aims to provide properties of specific characters.
