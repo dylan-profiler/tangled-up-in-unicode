@@ -512,6 +512,11 @@ def test_defaults_combining(char):
     assert combining(char) == 0
 
 
+@pytest.mark.parametrize("char", ["􀉆"])
+def test_defaults_script(char):
+    assert script(char) == "Unknown"
+
+
 @pytest.mark.parametrize("char", ["1", "9", "5"])
 def test_numeric_types(char):
     results = {
@@ -539,7 +544,7 @@ def test_out_of_range(char):
 
 
 def test_version():
-    assert unidata_version == "12.0.1"
+    assert unidata_version == "13.0.0"
 
 
 @pytest.mark.parametrize(
@@ -560,7 +565,7 @@ def test_name(idx, expected_value):
 
 
 @pytest.mark.parametrize(
-    "idx,expected_value", [(0, "Cc"), (13312, "Lo"), (19894, "Zzzz")]
+    "idx,expected_value", [(0, "Cc"), (13312, "Lo"), (19894, "Lo")]
 )
 def test_category(idx, expected_value):
     assert category(chr(idx)) == expected_value
@@ -575,7 +580,7 @@ def test_category(idx, expected_value):
         (13313, "L"),
         (20000, "L"),
         (19893, "L"),
-        (19894, ""),
+        (19894, "L"),
     ],
 )
 def test_bidirectional(idx, expected_value):
@@ -670,6 +675,7 @@ def test_block():
     assert block(chr(20000)) == "CJK Unified Ideographs"
     assert block(chr(13312)) == "CJK Unified Ideographs Extension A"
     assert block(chr(54491)) == "Hangul Syllables"
+    assert block(chr(1049158)) == "Supplementary Private Use Area-B"
 
 
 def test_age():
@@ -679,6 +685,7 @@ def test_age():
     assert age(chr(13312)) == "3.0"
     assert age(chr(78610)) == "5.2"
     assert age(chr(13055)) == "12.1"
+    assert age(chr(1049158)) == "2.0"
 
 
 def test_script():
