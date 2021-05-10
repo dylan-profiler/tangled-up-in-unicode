@@ -62,18 +62,21 @@ def category(chr: str) -> str:
 
     end_keys = sorted(unicode_data_to_category_end.keys())
     insertion_point = bisect.bisect_left(end_keys, idx)
-    key_end = end_keys[insertion_point]
-    result_end = unicode_data_to_category_end[key_end]
+    try:
+        key_end = end_keys[insertion_point]
+        result_end = unicode_data_to_category_end[key_end]
 
-    if result_end != key_start:
-        result_end = result_start
-        key_end = key_start
-    else:
-        result_end = unicode_data_to_category_start[result_end]
+        if result_end != key_start:
+            result_end = result_start
+            key_end = key_start
+        else:
+            result_end = unicode_data_to_category_start[result_end]
 
-    if key_start <= idx <= key_end and result_start == result_end:
-        return result_start
-    else:
+        if key_start <= idx <= key_end and result_start == result_end:
+            return result_start
+        else:
+            return "Zzzz"
+    except IndexError:
         return "Zzzz"
 
 
@@ -90,18 +93,21 @@ def bidirectional(chr: str) -> str:
 
     end_keys = sorted(unicode_data_to_bidirectional_end.keys())
     insertion_point = bisect.bisect_left(end_keys, idx)
-    key_end = end_keys[insertion_point]
-    result_end = unicode_data_to_bidirectional_end[key_end]
+    try:
+        key_end = end_keys[insertion_point]
+        result_end = unicode_data_to_bidirectional_end[key_end]
 
-    if result_end != key_start:
-        result_end = result_start
-        key_end = key_start
-    else:
-        result_end = unicode_data_to_bidirectional_start[result_end]
+        if result_end != key_start:
+            result_end = result_start
+            key_end = key_start
+        else:
+            result_end = unicode_data_to_bidirectional_start[result_end]
 
-    if key_start <= idx <= key_end and result_start == result_end:
-        return result_start
-    else:
+        if key_start <= idx <= key_end and result_start == result_end:
+            return result_start
+        else:
+            return ""
+    except IndexError:
         return ""
 
 
@@ -167,18 +173,21 @@ def mirrored(chr: str) -> int:
 
     end_keys = sorted(unicode_data_to_mirrored_end.keys())
     insertion_point = bisect.bisect_left(end_keys, idx)
-    key_end = end_keys[insertion_point]
-    result_end = unicode_data_to_mirrored_end[key_end]
+    try:
+        key_end = end_keys[insertion_point]
+        result_end = unicode_data_to_mirrored_end[key_end]
 
-    if result_end != key_start:
-        result_end = result_start
-        key_end = key_start
-    else:
-        result_end = unicode_data_to_mirrored_start[result_end]
+        if result_end != key_start:
+            result_end = result_start
+            key_end = key_start
+        else:
+            result_end = unicode_data_to_mirrored_start[result_end]
 
-    if key_start <= idx <= key_end and result_start == result_end:
-        return result_start
-    else:
+        if key_start <= idx <= key_end and result_start == result_end:
+            return result_start
+        else:
+            return 0
+    except IndexError:
         return 0
 
 
@@ -261,18 +270,21 @@ def age(chr: str) -> str:
 
     end_keys = sorted(derived_age_to_age_end.keys())
     insertion_point = bisect.bisect_left(end_keys, idx)
-    key_end = end_keys[insertion_point]
-    result_end = derived_age_to_age_end[key_end]
+    try:
+        key_end = end_keys[insertion_point]
+        result_end = derived_age_to_age_end[key_end]
 
-    if result_end != key_start:
-        result_end = result_start
-        key_end = key_start
-    else:
-        result_end = derived_age_to_age_start[result_end]
+        if result_end != key_start:
+            result_end = result_start
+            key_end = key_start
+        else:
+            result_end = derived_age_to_age_start[result_end]
 
-    if key_start <= idx <= key_end and result_start == result_end:
-        return result_start
-    else:
+        if key_start <= idx <= key_end and result_start == result_end:
+            return result_start
+        else:
+            return "1.0"
+    except IndexError:
         return "1.0"
 
 
@@ -288,18 +300,21 @@ def block(chr: str) -> str:
 
     end_keys = sorted(blocks_to_block_end.keys())
     insertion_point = bisect.bisect_left(end_keys, idx)
-    key_end = end_keys[insertion_point]
-    result_end = blocks_to_block_end[key_end]
+    try:
+        key_end = end_keys[insertion_point]
+        result_end = blocks_to_block_end[key_end]
 
-    if result_end != key_start:
-        result_end = result_start
-        key_end = key_start
-    else:
-        result_end = blocks_to_block_start[result_end]
+        if result_end != key_start:
+            result_end = result_start
+            key_end = key_start
+        else:
+            result_end = blocks_to_block_start[result_end]
 
-    if key_start <= idx <= key_end and result_start == result_end:
-        return result_start
-    else:
+        if key_start <= idx <= key_end and result_start == result_end:
+            return result_start
+        else:
+            return "Unknown"
+    except IndexError:
         return "Unknown"
 
 
@@ -315,18 +330,21 @@ def script(chr: str) -> str:
 
     end_keys = sorted(scripts_to_script_end.keys())
     insertion_point = bisect.bisect_left(end_keys, idx)
-    key_end = end_keys[insertion_point]
-    result_end = scripts_to_script_end[key_end]
+    try:
+        key_end = end_keys[insertion_point]
+        result_end = scripts_to_script_end[key_end]
 
-    if result_end != key_start:
-        result_end = result_start
-        key_end = key_start
-    else:
-        result_end = scripts_to_script_start[result_end]
+        if result_end != key_start:
+            result_end = result_start
+            key_end = key_start
+        else:
+            result_end = scripts_to_script_start[result_end]
 
-    if key_start <= idx <= key_end and result_start == result_end:
-        return result_start
-    else:
+        if key_start <= idx <= key_end and result_start == result_end:
+            return result_start
+        else:
+            return "Unknown"
+    except IndexError:
         return "Unknown"
 
 
@@ -393,5 +411,3 @@ def script_abbr(value: str) -> Optional[str]:
         return property_value_alias_sc_long_to_short[value]
     except KeyError:
         return None
-
-
