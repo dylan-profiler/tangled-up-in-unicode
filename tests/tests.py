@@ -679,6 +679,11 @@ def test_block():
     assert block(chr(243)) == "Latin-1 Supplement"
 
 
+def test_block_abbr():
+    assert block_abbr(block(chr(1049158))) == "Sup PUA B"
+    assert block_abbr(block(chr(243))) == "Latin 1 Sup"
+
+
 def test_age():
     assert age(chr(0)) == "1.1"
     assert age(chr(8)) == "1.1"
