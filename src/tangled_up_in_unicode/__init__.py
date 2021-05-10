@@ -1,4 +1,32 @@
-from tangled_up_in_unicode.tangled_up_in_unicode_13_0_0 import *
+from tangled_up_in_unicode.tangled_up_in_unicode_13_0_0 import (
+    name,
+    decimal,
+    digit,
+    numeric,
+    combining,
+    mirrored,
+    decomposition,
+    category,
+    bidirectional,
+    east_asian_width,
+    script,
+    block,
+    age,
+    unidata_version,
+    combining_long,
+    category_long,
+    bidirectional_long,
+    east_asian_width_long,
+    script_abbr,
+    block_abbr,
+    age_long,
+    prop_list,
+    titlecase,
+    lowercase,
+    uppercase,
+)
+
+__version__ = "0.1.0"
 
 __all__ = [
     "name",
@@ -26,4 +54,5 @@ __all__ = [
     "titlecase",
     "lowercase",
     "uppercase",
+    "__version__",
 ]

@@ -15,7 +15,7 @@ with (source_root / "README.md").open(encoding="utf-8") as f:
 
 setup(
     name="tangled_up_in_unicode",
-    version="0.0.7",
+    version="0.1.0",
     description="Access to the Unicode Character Database (UCD)",
     url="https://github.com/dylan-profiler/tangled-up-in-unicode",
     license="BSD 4-Clause",

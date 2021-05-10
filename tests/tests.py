@@ -427,7 +427,7 @@ def test_values(char, expected_value):
                 "Script_Long": "Latin",
                 "Script_Short": "Latn",
                 "Block_Long": "Latin Extended-A",
-                "Block_Short": None,
+                "Block_Short": "Latin Ext A",
                 "East_Asian_Width_Long": "Ambiguous",
                 "Bidirectional_Long": "Left_To_Right",
                 "Binary_Properties": set(),
@@ -676,6 +676,12 @@ def test_block():
     assert block(chr(13312)) == "CJK Unified Ideographs Extension A"
     assert block(chr(54491)) == "Hangul Syllables"
     assert block(chr(1049158)) == "Supplementary Private Use Area-B"
+    assert block(chr(243)) == "Latin-1 Supplement"
+
+
+def test_block_abbr():
+    assert block_abbr(block(chr(1049158))) == "Sup PUA B"
+    assert block_abbr(block(chr(243))) == "Latin 1 Sup"
 
 
 def test_age():
