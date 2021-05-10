@@ -676,6 +676,7 @@ def test_block():
     assert block(chr(13312)) == "CJK Unified Ideographs Extension A"
     assert block(chr(54491)) == "Hangul Syllables"
     assert block(chr(1049158)) == "Supplementary Private Use Area-B"
+    assert block(chr(243)) == "Latin-1 Supplement"
 
 
 def test_age():
