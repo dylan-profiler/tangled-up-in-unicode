@@ -26,6 +26,8 @@ from tangled_up_in_unicode.tangled_up_in_unicode_13_0_0 import (
     uppercase,
 )
 
+__version__ = "0.1.0"
+
 __all__ = [
     "name",
     "decimal",
@@ -52,4 +54,5 @@ __all__ = [
     "titlecase",
     "lowercase",
     "uppercase",
+    "__version__",
 ]
