@@ -427,7 +427,7 @@ def test_values(char, expected_value):
                 "Script_Long": "Latin",
                 "Script_Short": "Latn",
                 "Block_Long": "Latin Extended-A",
-                "Block_Short": None,
+                "Block_Short": "Latin Ext A",
                 "East_Asian_Width_Long": "Ambiguous",
                 "Bidirectional_Long": "Left_To_Right",
                 "Binary_Properties": set(),
