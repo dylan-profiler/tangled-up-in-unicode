@@ -18,7 +18,7 @@ setup(
     version="0.2.0",
     description="Access to the Unicode Character Database (UCD)",
     url="https://github.com/dylan-profiler/tangled-up-in-unicode",
-    license="BSD 4-Clause",
+    license="BSD License",
     packages=find_packages("src"),
     package_dir={"": "src"},
     install_requires=[],
