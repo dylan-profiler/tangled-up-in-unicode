@@ -62,7 +62,7 @@ Extra information provided by this package
 | Block						| &#9745; + alias				| -  					|
 | Age						| &#9745; + alias				| -  					|
 | Binary Property Values 	| &#9745;						| -  					|
-| Version					| 13.0.0 ([latest](http://www.unicode.org/versions/latest/))				| 12.0.1				|
+| Version					| 14.0.0 ([latest](http://www.unicode.org/versions/latest/))				| 12.0.1				|
 
 _Table 1: presence of properties is denoted by &#9745; (Unicode Character 'BALLOT BOX WITH CHECK' (U+2611))._		
 
