@@ -1,4 +1,4 @@
-from tangled_up_in_unicode.tangled_up_in_unicode_13_0_0 import (
+from tangled_up_in_unicode.tangled_up_in_unicode_14_0_0 import (
     name,
     decimal,
     digit,
@@ -26,7 +26,7 @@ from tangled_up_in_unicode.tangled_up_in_unicode_13_0_0 import (
     uppercase,
 )
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"
 
 __all__ = [
     "name",
