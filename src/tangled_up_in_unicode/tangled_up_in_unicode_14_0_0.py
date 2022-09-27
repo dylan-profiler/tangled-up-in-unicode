@@ -400,7 +400,7 @@ def combining_long(value: str) -> Optional[str]:
 def block_abbr(value: str) -> Optional[str]:
     """"""
     try:
-        return property_value_alias_blk_long_to_short[value]
+        return property_value_alias_blk_long_to_short[value.replace("-", " ")]
     except KeyError:
         return None
 
