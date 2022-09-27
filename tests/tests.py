@@ -544,7 +544,7 @@ def test_out_of_range(char):
 
 
 def test_version():
-    assert unidata_version == "13.0.0"
+    assert unidata_version == "14.0.0"
 
 
 @pytest.mark.parametrize(
