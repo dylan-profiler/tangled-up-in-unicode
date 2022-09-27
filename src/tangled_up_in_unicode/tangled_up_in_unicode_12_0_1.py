@@ -1,3 +1,5 @@
+from typing import Optional
+
 import bisect
 
 from tangled_up_in_unicode.u12_0_1_data import prop_list_to_property
@@ -36,7 +38,8 @@ unidata_version = "12.0.1"
 
 
 def name(chr: str, default=None) -> str:
-    """Returns the name assigned to the character chr as a string. If no name is defined, default is returned, or, if not given, ValueError is raised."""
+    """Returns the name assigned to the character chr as a string.
+    If no name is defined, default is returned, or, if not given, ValueError is raised."""
     idx = ord(chr)
     try:
         return unicode_data_to_name_start[idx]
@@ -59,23 +62,27 @@ def category(chr: str) -> str:
 
     end_keys = sorted(unicode_data_to_category_end.keys())
     insertion_point = bisect.bisect_left(end_keys, idx)
-    key_end = end_keys[insertion_point]
-    result_end = unicode_data_to_category_end[key_end]
+    try:
+        key_end = end_keys[insertion_point]
+        result_end = unicode_data_to_category_end[key_end]
 
-    if result_end != key_start:
-        result_end = result_start
-        key_end = key_start
-    else:
-        result_end = unicode_data_to_category_start[result_end]
+        if result_end != key_start:
+            result_end = result_start
+            key_end = key_start
+        else:
+            result_end = unicode_data_to_category_start[result_end]
 
-    if key_start <= idx <= key_end and result_start == result_end:
-        return result_start
-    else:
+        if key_start <= idx <= key_end and result_start == result_end:
+            return result_start
+        else:
+            return "Zzzz"
+    except IndexError:
         return "Zzzz"
 
 
 def bidirectional(chr: str) -> str:
-    """Returns the bidirectional class assigned to the character chr as string. If no such value is defined, an empty string is returned."""
+    """Returns the bidirectional class assigned to the character chr as string.
+    If no such value is defined, an empty string is returned."""
     idx = ord(chr)
     start_keys = sorted(unicode_data_to_bidirectional_start.keys())
     insertion_point = bisect.bisect_left(start_keys, idx)
@@ -86,23 +93,27 @@ def bidirectional(chr: str) -> str:
 
     end_keys = sorted(unicode_data_to_bidirectional_end.keys())
     insertion_point = bisect.bisect_left(end_keys, idx)
-    key_end = end_keys[insertion_point]
-    result_end = unicode_data_to_bidirectional_end[key_end]
+    try:
+        key_end = end_keys[insertion_point]
+        result_end = unicode_data_to_bidirectional_end[key_end]
 
-    if result_end != key_start:
-        result_end = result_start
-        key_end = key_start
-    else:
-        result_end = unicode_data_to_bidirectional_start[result_end]
+        if result_end != key_start:
+            result_end = result_start
+            key_end = key_start
+        else:
+            result_end = unicode_data_to_bidirectional_start[result_end]
 
-    if key_start <= idx <= key_end and result_start == result_end:
-        return result_start
-    else:
+        if key_start <= idx <= key_end and result_start == result_end:
+            return result_start
+        else:
+            return ""
+    except IndexError:
         return ""
 
 
 def decimal(chr: str, default=None) -> int:
-    """Returns the decimal value assigned to the character chr as integer. If no such value is defined, default is returned, or, if not given, ValueError is raised."""
+    """Returns the decimal value assigned to the character chr as integer.
+    If no such value is defined, default is returned, or, if not given, ValueError is raised."""
     idx = ord(chr)
     try:
         return unicode_data_to_decimal_start[idx]
@@ -114,7 +125,8 @@ def decimal(chr: str, default=None) -> int:
 
 
 def digit(chr: str, default=None) -> int:
-    """Returns the digit value assigned to the character chr as integer. If no such value is defined, default is returned, or, if not given, ValueError is raised."""
+    """Returns the digit value assigned to the character chr as integer.
+    If no such value is defined, default is returned, or, if not given, ValueError is raised."""
     idx = ord(chr)
     try:
         return unicode_data_to_digit_start[idx]
@@ -126,7 +138,8 @@ def digit(chr: str, default=None) -> int:
 
 
 def numeric(chr: str, default=None) -> float:
-    """Returns the numeric value assigned to the character chr as float. If no such value is defined, default is returned, or, if not given, ValueError is raised."""
+    """Returns the numeric value assigned to the character chr as float.
+    If no such value is defined, default is returned, or, if not given, ValueError is raised."""
     idx = ord(chr)
     try:
         return unicode_data_to_numeric_start[idx]
@@ -138,7 +151,8 @@ def numeric(chr: str, default=None) -> float:
 
 
 def combining(chr: str) -> int:
-    """Returns the canonical combining class assigned to the character chr as integer. Returns 0 if no combining class is defined."""
+    """Returns the canonical combining class assigned to the character chr as integer.
+    Returns 0 if no combining class is defined."""
     idx = ord(chr)
     try:
         return unicode_data_to_combining_start[idx]
@@ -147,7 +161,8 @@ def combining(chr: str) -> int:
 
 
 def mirrored(chr: str) -> int:
-    """Returns the mirrored property assigned to the character chr as integer. Returns 1 if the character has been identified as a "mirrored" character in bidirectional text, 0 otherwise."""
+    """Returns the mirrored property assigned to the character chr as integer.
+    Returns 1 if the character has been identified as a "mirrored" character in bidirectional text, 0 otherwise."""
     idx = ord(chr)
     start_keys = sorted(unicode_data_to_mirrored_start.keys())
     insertion_point = bisect.bisect_left(start_keys, idx)
@@ -158,23 +173,27 @@ def mirrored(chr: str) -> int:
 
     end_keys = sorted(unicode_data_to_mirrored_end.keys())
     insertion_point = bisect.bisect_left(end_keys, idx)
-    key_end = end_keys[insertion_point]
-    result_end = unicode_data_to_mirrored_end[key_end]
+    try:
+        key_end = end_keys[insertion_point]
+        result_end = unicode_data_to_mirrored_end[key_end]
 
-    if result_end != key_start:
-        result_end = result_start
-        key_end = key_start
-    else:
-        result_end = unicode_data_to_mirrored_start[result_end]
+        if result_end != key_start:
+            result_end = result_start
+            key_end = key_start
+        else:
+            result_end = unicode_data_to_mirrored_start[result_end]
 
-    if key_start <= idx <= key_end and result_start == result_end:
-        return result_start
-    else:
+        if key_start <= idx <= key_end and result_start == result_end:
+            return result_start
+        else:
+            return 0
+    except IndexError:
         return 0
 
 
 def decomposition(chr: str) -> str:
-    """Returns the character decomposition mapping assigned to the character chr as string. An empty string is returned in case no such mapping is defined."""
+    """Returns the character decomposition mapping assigned to the character chr as string.
+    An empty string is returned in case no such mapping is defined."""
     idx = ord(chr)
     try:
         return unicode_data_to_decomposition_start[idx]
@@ -251,18 +270,21 @@ def age(chr: str) -> str:
 
     end_keys = sorted(derived_age_to_age_end.keys())
     insertion_point = bisect.bisect_left(end_keys, idx)
-    key_end = end_keys[insertion_point]
-    result_end = derived_age_to_age_end[key_end]
+    try:
+        key_end = end_keys[insertion_point]
+        result_end = derived_age_to_age_end[key_end]
 
-    if result_end != key_start:
-        result_end = result_start
-        key_end = key_start
-    else:
-        result_end = derived_age_to_age_start[result_end]
+        if result_end != key_start:
+            result_end = result_start
+            key_end = key_start
+        else:
+            result_end = derived_age_to_age_start[result_end]
 
-    if key_start <= idx <= key_end and result_start == result_end:
-        return result_start
-    else:
+        if key_start <= idx <= key_end and result_start == result_end:
+            return result_start
+        else:
+            return "1.0"
+    except IndexError:
         return "1.0"
 
 
@@ -278,18 +300,21 @@ def block(chr: str) -> str:
 
     end_keys = sorted(blocks_to_block_end.keys())
     insertion_point = bisect.bisect_left(end_keys, idx)
-    key_end = end_keys[insertion_point]
-    result_end = blocks_to_block_end[key_end]
+    try:
+        key_end = end_keys[insertion_point]
+        result_end = blocks_to_block_end[key_end]
 
-    if result_end != key_start:
-        result_end = result_start
-        key_end = key_start
-    else:
-        result_end = blocks_to_block_start[result_end]
+        if result_end != key_start:
+            result_end = result_start
+            key_end = key_start
+        else:
+            result_end = blocks_to_block_start[result_end]
 
-    if key_start <= idx <= key_end and result_start == result_end:
-        return result_start
-    else:
+        if key_start <= idx <= key_end and result_start == result_end:
+            return result_start
+        else:
+            return "Unknown"
+    except IndexError:
         return "Unknown"
 
 
@@ -305,18 +330,21 @@ def script(chr: str) -> str:
 
     end_keys = sorted(scripts_to_script_end.keys())
     insertion_point = bisect.bisect_left(end_keys, idx)
-    key_end = end_keys[insertion_point]
-    result_end = scripts_to_script_end[key_end]
+    try:
+        key_end = end_keys[insertion_point]
+        result_end = scripts_to_script_end[key_end]
 
-    if result_end != key_start:
-        result_end = result_start
-        key_end = key_start
-    else:
-        result_end = scripts_to_script_start[result_end]
+        if result_end != key_start:
+            result_end = result_start
+            key_end = key_start
+        else:
+            result_end = scripts_to_script_start[result_end]
 
-    if key_start <= idx <= key_end and result_start == result_end:
-        return result_start
-    else:
+        if key_start <= idx <= key_end and result_start == result_end:
+            return result_start
+        else:
+            return "Unknown"
+    except IndexError:
         return "Unknown"
 
 
@@ -329,7 +357,7 @@ def prop_list(chr: str) -> list:
         return set()
 
 
-def age_long(value: str) -> str:
+def age_long(value: str) -> Optional[str]:
     """"""
     try:
         return property_value_alias_age_short_to_long[value]
@@ -337,7 +365,7 @@ def age_long(value: str) -> str:
         return None
 
 
-def category_long(value: str) -> str:
+def category_long(value: str) -> Optional[str]:
     """"""
     try:
         return property_value_alias_gc_short_to_long[value]
@@ -345,7 +373,7 @@ def category_long(value: str) -> str:
         return None
 
 
-def east_asian_width_long(value: str) -> str:
+def east_asian_width_long(value: str) -> Optional[str]:
     """"""
     try:
         return property_value_alias_ea_short_to_long[value]
@@ -353,7 +381,7 @@ def east_asian_width_long(value: str) -> str:
         return None
 
 
-def bidirectional_long(value: str) -> str:
+def bidirectional_long(value: str) -> Optional[str]:
     """"""
     try:
         return property_value_alias_bc_short_to_long[value]
@@ -361,7 +389,7 @@ def bidirectional_long(value: str) -> str:
         return None
 
 
-def combining_long(value: str) -> str:
+def combining_long(value: str) -> Optional[str]:
     """"""
     try:
         return property_value_alias_ccc_short_to_long[value]
@@ -369,15 +397,15 @@ def combining_long(value: str) -> str:
         return None
 
 
-def block_abbr(value: str) -> str:
+def block_abbr(value: str) -> Optional[str]:
     """"""
     try:
-        return property_value_alias_blk_long_to_short[value]
+        return property_value_alias_blk_long_to_short[value.replace("-", " ")]
     except KeyError:
         return None
 
 
-def script_abbr(value: str) -> str:
+def script_abbr(value: str) -> Optional[str]:
     """"""
     try:
         return property_value_alias_sc_long_to_short[value]
